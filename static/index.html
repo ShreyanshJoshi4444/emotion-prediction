@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GRU-powered emotion prediction from text" />
+  <title>EmotiSense — AI Emotion Analyzer</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
+
+  <main class="page-shell">
+    <nav class="nav">
+      <a class="brand" href="/" aria-label="EmotiSense home">
+        <span class="brand-mark">E</span>
+        <span>EmotiSense</span>
+      </a>
+      <div class="model-badge">
+        <span class="status-dot"></span>
+        GRU Neural Network
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">NLP • Deep Learning • Real-time inference</span>
+        <h1>Understand the emotion <span>behind the words.</span></h1>
+        <p>
+          Type a sentence and the model will estimate whether it expresses
+          sadness, joy, love, anger, fear, or surprise.
+        </p>
+      </div>
+
+      <div class="emotion-strip" aria-label="Supported emotions">
+        <span>😔 Sadness</span>
+        <span>😄 Joy</span>
+        <span>🥰 Love</span>
+        <span>😠 Anger</span>
+        <span>😨 Fear</span>
+        <span>😲 Surprise</span>
+      </div>
+    </section>
+
+    <section class="workspace-grid">
+      <article class="card input-card">
+        <div class="card-heading">
+          <div>
+            <p class="section-label">Your text</p>
+            <h2>What are you feeling?</h2>
+          </div>
+          <span id="charCount" class="character-count">0 / 2000</span>
+        </div>
+
+        <form id="predictionForm">
+          <label class="sr-only" for="textInput">Text to analyze</label>
+          <textarea
+            id="textInput"
+            maxlength="2000"
+            placeholder="Try: I finally finished my project and I am so excited!"
+            required
+          ></textarea>
+
+          <div class="examples">
+            <span>Try an example:</span>
+            <button type="button" class="example-chip" data-text="I finally got the opportunity I was hoping for and I am so happy!">Joy</button>
+            <button type="button" class="example-chip" data-text="I miss them so much and today feels really lonely.">Sadness</button>
+            <button type="button" class="example-chip" data-text="I cannot believe they cancelled everything at the last minute.">Anger</button>
+          </div>
+
+          <button id="analyzeButton" class="primary-button" type="submit">
+            <span class="button-text">Analyze emotion</span>
+            <span class="button-icon">→</span>
+          </button>
+        </form>
+
+        <p id="errorMessage" class="error-message" role="alert"></p>
+      </article>
+
+      <article id="resultCard" class="card result-card empty-state" aria-live="polite">
+        <div id="emptyResult" class="empty-content">
+          <div class="empty-icon">✦</div>
+          <h2>Your result will appear here</h2>
+          <p>Enter a sentence and run the model to see its prediction and confidence scores.</p>
+        </div>
+
+        <div id="predictionResult" class="prediction-content hidden">
+          <p class="section-label">Prediction</p>
+
+          <div class="prediction-header">
+            <div id="emotionIcon" class="emotion-icon">😄</div>
+            <div>
+              <p class="result-kicker">Most likely emotion</p>
+              <h2 id="emotionLabel">Joy</h2>
+            </div>
+            <div class="confidence-pill">
+              <strong id="confidenceValue">0%</strong>
+              <span>confidence</span>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="scores-heading">
+            <h3>Emotion breakdown</h3>
+            <span>Model probabilities</span>
+          </div>
+          <div id="probabilityList" class="probability-list"></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="info-grid">
+      <article class="mini-card">
+        <span class="mini-icon">01</span>
+        <div><strong>Tokenize</strong><p>Your text is cleaned and converted into token sequences.</p></div>
+      </article>
+      <article class="mini-card">
+        <span class="mini-icon">02</span>
+        <div><strong>Analyze</strong><p>A trained GRU network processes the sequence.</p></div>
+      </article>
+      <article class="mini-card">
+        <span class="mini-icon">03</span>
+        <div><strong>Predict</strong><p>The model returns scores across six emotion classes.</p></div>
+      </article>
+    </section>
+
+    <footer>
+      <span>Built with FastAPI, Keras & JavaScript.</span>
+      <span>Demo model — not a clinical or psychological assessment.</span>
+    </footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
