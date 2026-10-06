@@ -14,7 +14,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_DIR = BASE_DIR / "ImportantParts"
+MODEL_DIR = BASE_DIR
 STATIC_DIR = BASE_DIR / "static"
 LABELS = ("sadness", "joy", "love", "anger", "fear", "surprise")
 MAX_SEQUENCE_LENGTH = 30
