@@ -89,6 +89,7 @@ html,body,[class*="css"] { font-family:"DM Sans",sans-serif; }
   padding:1.3rem 1.4rem 1.15rem;box-shadow:0 18px 48px rgba(0,0,0,.13); }
 [data-testid="stTextArea"] textarea { background:#101a2e;color:#f2f6ff;
   border:1px solid #35445f;border-radius:.8rem;font-size:1rem;line-height:1.65; }
+[data-testid="stTextArea"] textarea::placeholder { color:#8d9eb8;opacity:1; }
 [data-testid="stTextArea"] label { color:#eaf0fb;font-weight:700; }
 [data-testid="stFormSubmitButton"] button { background:linear-gradient(100deg,#7ce0d0,#ac9df6);
   border:0;color:#102035;border-radius:.75rem;font-weight:800;padding:.55rem 1.25rem; }
