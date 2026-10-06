@@ -31,3 +31,11 @@ Connect this GitHub repository as a Python web service.
 - Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 
 Use `/health` to verify the model loaded. The frontend calls `/predict` on the same origin.
+
+## Streamlit Community Cloud
+
+For free public hosting, connect this GitHub repository to Streamlit Community Cloud
+and select `streamlit_app.py` on the `main` branch. Choose Python 3.11 in the
+deployment settings. The app loads the same `GRU_Model.keras` and
+`GRU_Tokenizer.pkl` files from the repository root. Changes pushed to the
+branch update the deployed app.
